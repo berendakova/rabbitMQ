@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add picture{% endblock %}
+
+{% block body %}
+    {{ include('includeFiles/header.html.twig') }}
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+
+<div>
+    <div style="margin-top: 200px;margin-left: 700px">
+        <h1 style="color: black ; margin-left: 50px">Add picture</h1>
+        <p style="color:black; margin-left: 50px">Image Name</p>
+        {{ form_start(imageForm) }}
+        {{ form_row(imageForm.image) }}
+        <p style="color:black; margin-left: 50px">File</p>
+      <div style="margin-left: 25px">  {{ form_row(imageForm.file) }}</div>
+
+        <button type="submit" class="btn" style="margin-left: 100px">Add</button>
+
+        {{ form_end(imageForm) }}
+    </div>
+    {% if success is not empty %}
+    <p style="color:green; margin-left: 800px"> {{ success}} </p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    {{ include('includeFiles/header.html.twig') }}
+
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+    <!-- ======= About Section ======= -->
+
+    <section id="about" class="about">
+
+        <div class="row">
+        </div>
+        <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" style="margin-left: 100px">
+            <h3 style="color: white">Hi,</h3>
+            <p style="color: white" class="font-italic">
+                You can add a photo for processing, after it there will be green fields in your picture.
+            </p>
+            <ul style="color: white">
+                <li><i class="icofont-check-circled"></i> Follow the link above Add</li>
+                <li><i class="icofont-check-circled"></i> Upload a picture</li>
+                <li><i class="icofont-check-circled"></i>Enjoy the result in your profile</li>
+            </ul>
+            <p style="color: white">
+                This site uses technology RabbitMQ, so do SSSSSSSS be alarmed if your image was not immediately processed
+            </p>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery">
+        <div class="row no-gutters" style="margin-top: 20px ; margin-left: 500px">
+            <div class="col-lg-3 col-md-4" style="margin-left: 20px ; margin-right: 100px">
+                <div class="gallery-item">
+                    <a href="assets/img/was.ipg" class="venobox" data-gall="gallery-item">
+                        <img src="assets/img/was.jpg" alt="" class="img-fluid">
+                        <p style="color: black">This is photo before processing</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4">
+                <div class="gallery-item">
+                    <a href="assets/img/is.png" class="venobox" data-gall="gallery-item">
+                        <img src="assets/img/is.png" alt="" class="img-fluid">
+                        <p style="color: black">This is photo after processing</p>
+
+                    </a>
+                </div>
+
+        </div>
+    </div>
+    </section>
+
+{% endblock %}

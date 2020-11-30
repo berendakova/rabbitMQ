@@ -1,0 +1,27 @@
+<!-- ======= Header ======= -->
+<header id="header" >
+    <div class="container d-flex align-items-center">
+
+        <h1 class="logo mr-auto"><a href="/home">Rabbit Image</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+        <nav class="nav-menu d-none d-lg-block">
+            <ul>
+                <li><a href="/home">Home</a></li>
+                {% if user is not empty %}
+                    <li><a href="/add">Add image</a></li>
+                    <li><a href="/profile">My Gallery</a></li>
+                    <li><a href="/logout">LogOut</a></li>
+
+                {% endif %}
+                {% if user is empty %}
+                    <li><a href="/register">Register</a></li>
+                    <li><a href="/login">LogIn</a></li>
+
+                {% endif %}
+            </ul>
+        </nav><!-- .nav-menu -->
+
+    </div>
+</header><!

@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body %}
+
+    {{ include('includeFiles/header.html.twig') }}
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+<div>
+    <section id="gallery" class="gallery" style="margin-top: 50px">
+
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color:black;">Your processed picture:</h2>
+            </div>
+        </div>
+
+        <div class="container-fluid"  data-aos-delay="100">
+
+            <div class="row no-gutters">
+                {% if processedPictures is empty %}
+                <p style="color: black"> You have not got processed pictures</p>
+                {% elseif processedPictures is not empty %}
+                {% for picture in processedPictures %}
+                    <div class="col-lg-3 col-md-4">
+                        <div class="gallery-item" style="margin-top: 10px; margin-left: 10px; margin-right: 10px">
+                            <a href="images/{{ picture.file }}" class="venobox" data-gall="gallery-item" style="margin-top: 10px; margin-left: 10px; margin-right: 10px">
+                                <img src="images/{{ picture.file }}" alt="" class="img-fluid">
+                                <p style="color:black;">{{ picture.image }}</p>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+
+                {% endif %}
+            </div>
+
+        </div>
+    </section><!-- End Gallery Section -->
+
+
+    <section id="gallery" class="gallery" style="margin-top: auto">
+
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color:black;">Your picture in queue</h2>
+            </div>
+        </div>
+
+        <div class="container-fluid"  data-aos-delay="100">
+
+            <div class="row no-gutters">
+                {% if pictures is empty %}
+                <p style="color: black"> You have not pictures in queue</p>
+                {% elseif pictures is not empty %}
+                {% for picture in pictures %}
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item" style="margin-top: 20px; margin-left: 20px; margin-right: 20px">
+                        <a href="images/{{ picture.file }}" class="venobox" data-gall="gallery-item" style="margin-top: 10px; margin-left: 10px; margin-right: 10px">
+                            <img src="images/{{ picture.file }}" alt="" class="img-fluid">
+                            <p style="color:black;">{{ picture.image }}</p>
+                        </a>
+                    </div>
+                </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+        </div>
+    </section><!-- End Gallery Section -->
+</div>
+{% endblock %}

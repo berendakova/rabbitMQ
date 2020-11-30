@@ -6,6 +6,8 @@
 parameters:
 
 services:
+    app.consumer.mail_sender:
+        class: App\Consumer\MailSenderConsumer
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.

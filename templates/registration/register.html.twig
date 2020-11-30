@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    {{ include('includeFiles/header.html.twig') }}
+<div>
+    <div style="margin-top: 200px;margin-left: 700px">
+    <h1 style="color: black ; margin-left: 50px">Register</h1>
+   <p style="color:black; margin-left: 40px">Email</p>
+    {{ form_start(registrationForm) }}
+    {{ form_row(registrationForm.email) }}
+    <p style="color:black; margin-left: 40px">Name</p>
+
+    {{ form_row(registrationForm.name) }}
+    <p style="color:black; margin-left: 40px">Password</p>
+
+    {{ form_row(registrationForm.plainPassword, {
+            label: 'email'
+        }) }}
+    <p style="color:black; margin-left: 40px">Agree</p>
+
+    {{ form_row(registrationForm.agreeTerms , {
+        label:'email'
+    }) }}
+
+        <button type="submit" class="btn" style="margin-left: 100px">Register</button>
+    {{ form_end(registrationForm) }}
+</div>
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert" ><p style="color:black;">{{ flashError }}</p></div>
+    {% endfor %}
+</div>
+{% endblock %}
