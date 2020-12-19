@@ -22,6 +22,9 @@ class RabbitCommand extends Command
     public const PASSWORD = "password";
     public const PORT = 5672;
     public const HOST = "localhost";
+    public const BORDER_COLOR = "green";
+    public const QUALITY = 80;
+    public const IS_PROCESSED = 1;
 
     private $entityManager;
 
@@ -70,16 +73,15 @@ class RabbitCommand extends Command
         $imageFolder = ImageController::IMAGE_DIR . "/" . $fileName;
 
         $imagick = new \Imagick($imageFolder);
-        $borderColor = "green";
-        $imagick->borderImage($borderColor,10,10);
-        $imagick->setCompressionQuality(80);
+        $imagick->borderImage(self::BORDER_COLOR,10,10);
+        $imagick->setCompressionQuality(self::QUALITY);
         file_put_contents($imageFolder ,$imagick);
 
         $repository = $this->entityManager->getRepository("App:Image");
         $picture = $repository->findOneBy(
             ['file' => $fileName]
         );
-        $picture->setIsProcessed(1);
+        $picture->setIsProcessed(self::IS_PROCESSED);
         $this->entityManager->persist($picture);
         $this->entityManager->flush();
 
